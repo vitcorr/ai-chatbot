@@ -1,7 +1,7 @@
 /* index.css */
 
 body {
-    font-family: 'Caudex', serif;
+    font-family: system-ui;
     background-color: #f0f0f0; /* Light gray background */
     margin: 0;
     padding: 0;
@@ -26,4 +26,12 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+input{
+    border: 1px solid #ccc; /* Light gray border */
+    padding: 10px;
+    border-radius: 4px; /* Rounded corners */
+    width: 80%;
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
 }
