@@ -1,6 +1,5 @@
 import { GoogleGenAI } from "@google/genai";
 import { useState } from "react";
-import ReactMarkdown from "react-markdown";
 
 import Chat from "./Chat";
 import Message from "./Message";
@@ -13,9 +12,9 @@ const newChat = ai.chats.create({
   model: "gemini-2.0-flash",
   history: [],
   // contents: chat,
-  // config: {
-  //   systemInstruction: "Keep responses short and concise.",
-  // },
+  config: {
+    systemInstruction: "Try to use emojis.",
+  },
 });
 
 function App() {
@@ -37,12 +36,12 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <h1>Gemini Ai Chatbot</h1>
-      Messages:
+    <div className="App min-h-screen flex flex-col items-center bg-[#0C3B2E]">
+      <h1 className="fixed w-full flex justify-center p-4 bg-[#0C3B2E] text-white text-2xl">
+        Gemini Ai Chatbot🌟
+      </h1>
       <Message messages={newChat.getHistory()}></Message>
       <Chat onChatChange={setChat} onChatSubmit={submit} />
-      {chat && <button onClick={submit}>send</button>}
     </div>
   );
 }

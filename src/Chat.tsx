@@ -24,18 +24,38 @@ const Chat = ({ onChatChange, onChatSubmit }: ChatProps) => {
     }
   }
 
+  function handlebuttonClick() {
+    onChatChange(""); // Call the parent function to clear the chat
+    setChat(""); // Clear the local chat state
+    onChatSubmit(); // Call the parent function to submit the chat
+  }
+
   return (
-    <div>
-      <label>
-        You:{" "}
+    <div className="fixed bottom-0 flex flex-col py-4 bg-gray-500 rounded-2xl mb-4 mx-auto shadow-lg px-4">
+      <label className="flex justify-center">
+        <p className="text-white p-2 text-center m-2">You: </p>
         <input
+          className="p-2 rounded-md border-2 border-[#2cc295] bg-[#0C3B2E] m-2 text-white"
           type="text"
           placeholder="Enter a chat..."
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
           value={chat}
         />
+        {chat && (
+          <button
+            className="bg-[#2cc295] text-white p-2 rounded-md hover:shadow-2xl m-4 hover:shadow-white"
+            onClick={handlebuttonClick}
+          >
+            Send
+          </button>
+        )}
       </label>
+      <span className="text-white p-2">
+        AI is experimental and meant to assist only. Please,{" "}
+        <span style={{ color: "red" }}>SPEAK</span> to someone if you need{" "}
+        <span style={{ color: "red" }}>URGENT</span> help!
+      </span>
     </div>
   );
 };
