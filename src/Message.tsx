@@ -8,7 +8,7 @@ type MessageProps = {
 
 const Message = ({ messages }: MessageProps) => {
   return (
-    <div className="flex flex-col bg-[#707d7d] rounded-2xl p-2  ">
+    <div className="flex flex-col bg-[#707d7d] rounded-2xl p-2 w-[50%] ml-[24%]">
       <h2 className="text-2xl text-white text-center m-2">Messages</h2>
 
       {messages.map((item, index) =>

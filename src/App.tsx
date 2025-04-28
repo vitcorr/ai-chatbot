@@ -45,11 +45,13 @@ function App() {
   //     systemInstruction: "you are a medieval knight ",
   //   },
   // });
-
+  const [loading, setLoading] = useState(false);
   async function submit() {
+    setLoading(true);
     const response = await newChat.sendMessage({
       message: chat,
     });
+    setLoading(false);
     // Log the response as it arrives
     setAiReply("");
     setAiReply(response.text || "");
@@ -63,7 +65,7 @@ function App() {
       <h1 className="fixed w-full flex justify-center p-4 bg-[#0C3B2E] text-white text-2xl">
         Gemini Ai Chatbot🌟
       </h1>
-      <div className="flex mt-20 mb-50 justify-between w-full">
+      <div className="flex mt-20 mb-52 justify-between w-full">
         <Message messages={newChat.getHistory()}></Message>
 
         <div>
@@ -94,6 +96,7 @@ function App() {
           </select>
         </div>
       </div>
+      {loading && <div className="loader fixed bottom-40"></div>}
       <Chat onChatChange={setChat} onChatSubmit={submit} />
     </div>
   );
